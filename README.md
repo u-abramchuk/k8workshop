@@ -2,5 +2,6 @@
 
 1. dotnet new razor -o k8workshop # create new project
 2. dotnet new globaljson # fix dotnet sdk version
-2. docker build -t k8workshop .
-3. docker run -d -p 8080:80 --name myapp k8workshop
+3. docker build -t k8workshop . # build docker image
+4. docker run -it --rm -p 5000:5000 --name myapp k8workshop # launch app in docker
+5. docker run -d --rm -p 5000:5000 --name myapp k8workshop # launch app in docker in background
