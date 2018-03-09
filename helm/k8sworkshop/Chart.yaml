@@ -1,0 +1,4 @@
+apiVersion: v1
+description: k8sworkshop service
+name: k8sworkshop
+version: 1.0.0

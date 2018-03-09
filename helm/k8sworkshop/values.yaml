@@ -1,0 +1,7 @@
+replicas: 3
+image:
+  repository:
+  tag:
+  pullPolicy: Always
+env:
+  ASPNETCORE_ENVIRONMENT: Production
