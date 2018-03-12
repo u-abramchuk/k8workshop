@@ -14,8 +14,9 @@ metadata:
     "kong/strip-request-path": "false"
 spec:
   ports:
-    - port: {{ .Values.port }}
+    - port: {{ .Values.service.port }}
       name: web
       targetPort: 5000
   selector:
     component: "{{ template "fullname" . }}"
+  type: {{ .Values.service.type | quote }}

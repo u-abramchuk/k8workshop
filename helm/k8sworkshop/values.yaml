@@ -5,4 +5,6 @@ image:
   pullPolicy: Always
 env:
   ASPNETCORE_ENVIRONMENT: Production
-port: 5000
+service:
+  type: NodePort
+  port: 5000
