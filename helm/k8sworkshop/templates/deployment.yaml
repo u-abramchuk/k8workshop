@@ -5,7 +5,7 @@ metadata:
   labels:
     heritage: {{ .Release.Service | quote }}
     release: {{ .Release.Name | quote }}
-    chart: "{{ .Chart.Name }}-{{ .chart.Version }}"
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
     component: "{{ template "fullname" . }}"
     run: {{ template "fullname" . }}
   annotations:
@@ -22,7 +22,7 @@ spec:
       labels:
         heritage: {{ .Release.Service | quote }}
         release: {{ .Release.Name | quote }}
-        chart: "{{ .Chart.Name }}-{{ .chart.Version }}"
+        chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
         component: "{{ template "fullname" . }}"
         run: {{ template "fullname" . }}
     spec:
@@ -35,4 +35,3 @@ spec:
           value: {{ .Values.env.ASPNETCORE_ENVIRONMENT | quote }}
         ports:
         - containerPort: 5000
-          name: http

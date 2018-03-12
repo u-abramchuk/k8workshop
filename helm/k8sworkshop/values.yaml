@@ -1,7 +1,8 @@
 replicas: 3
 image:
-  repository:
-  tag:
+  repository: targetprocess/k8sworkshop
+  tag: initial
   pullPolicy: Always
 env:
   ASPNETCORE_ENVIRONMENT: Production
+port: 5000
