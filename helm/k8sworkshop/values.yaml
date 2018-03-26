@@ -8,3 +8,4 @@ env:
 service:
   type: NodePort
   port: 5000
+secret: RG8gbm90IHRlbGwgYW55b25lIQo=

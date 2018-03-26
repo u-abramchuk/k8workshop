@@ -35,3 +35,12 @@ spec:
           value: {{ .Values.env.ASPNETCORE_ENVIRONMENT | quote }}
         ports:
         - containerPort: 5000
+        volumeMounts:
+        - mountPath: /secrets
+          name: secret
+          readOnly: true
+      volumes:
+      - name: secret
+        secret:
+          defaultMode: 420
+          secretName: {{ template "fullname" . }}-secret
