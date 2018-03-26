@@ -1,6 +1,22 @@
 # Workshop plan
 
-1. dotnet new razor -o k8sworkshop # create new project
+## Pre-requisites
+1. Download and install [Docker CE Edge](https://www.docker.com/community-edition). Make sure to download Edge build. 2. If you have kubectl already installed then delete $HOME/.kube folder.
+3. After installing Docker go to Docker settings, switch to 'Kubernetes' tab and check 'Enable Kubernetes' checkbox. Wait till it's been installed.
+4. Check Docker installation with ```docker version``` command.
+5. Check Kubernetes installation with ```kubectl version``` command.
+6. Download [Helm](https://github.com/kubernetes/helm/releases) and add it to PATH.
+7. Initialize Helm with ```helm init```.
+8. Check installation with ```helm version``` command.
+9. Download and install [dotnet SDK](https://www.microsoft.com/net/download/windows).
+10. Make sure dotnet core is installed with ```dotnet --version``` command.
+11. Fetch dotnet Docker images we'll be using later:
+```
+docker pull microsoft/aspnetcore-build:2.0
+docker pull microsoft/dotnet:2.0-runtime
+```
+
+1. dotnet new empty -o k8sworkshop && cd k8sworkshop # create new project
 2. dotnet new globaljson # fix dotnet sdk version
 3. docker build -t k8sworkshop . # build docker image
 4. docker run -it --rm -p 5000:5000 --name myapp k8sworkshop # launch app in docker
