@@ -12,3 +12,7 @@
 10. helm install k8sworkshop # install helm chart
 11. kubectl get svc # view list of services
 12. # open http://localhost:31264 in browser
+13. # open https://github.com/kubernetes/ingress-nginx/blob/master/deploy/README.md.
+14. helm install stable/nginx-ingress --name ingress-nginx -f helm/nginx-ingress/values.yaml
+15. kubectl get po # make sure that all pods are up and running
+16. # open http://workshop.com:32080/k8s in browser
