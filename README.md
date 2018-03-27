@@ -11,29 +11,83 @@
 9. Download and install [dotnet SDK](https://www.microsoft.com/net/download/windows).
 10. Make sure dotnet core is installed with ```dotnet --version``` command.
 11. Fetch dotnet Docker images we'll be using later:
-```
+```bash
 docker pull microsoft/aspnetcore-build:2.0
 docker pull microsoft/dotnet:2.0-runtime
 ```
 
 ## Create dotnet core app
-1. dotnet new empty -o k8sworkshop && cd k8sworkshop # create new project
-2. dotnet new globaljson # fix dotnet sdk version
-3. Make sure to paste the following code snippet into k8sworkshop.csproj:
+1. Create new empty project
+```bash
+dotnet new empty -o k8sworkshop
 ```
+2. cd to project folder
+```bash
+cd k8sworkshop
+```
+2. Fix dotnet SDK version
+```bash
+dotnet new globaljson
+```
+3. Make sure to paste the following code snippet into k8sworkshop.csproj:
+```xml
 <PropertyGroup>
     <PublishWithAspNetCoreTargetManifest>false</PublishWithAspNetCoreTargetManifest>
 </PropertyGroup>
 ```
 
 ## Launch app in docker
-1. docker build -t k8sworkshop . # build docker image
-2. docker run -it --rm -p 5000:5000 --name myapp k8sworkshop # launch app in docker
-3. docker run -d --rm -p 5000:5000 --name myapp k8sworkshop # launch app in docker in background
+1. Create Dockerfile and place it in the app directory:
+```dockerfile
+FROM microsoft/aspnetcore-build:2.0 AS build-env
+WORKDIR /app
 
-## Publish docker image
-1. docker tag k8sworkshop targetprocess/k8sworkshop:initial
-2. docker push targetprocess/k8sworkshop:initial
+# Copy csproj and restore as distinct layers
+COPY *.csproj ./
+RUN dotnet restore
+
+# Copy everything else and build
+COPY . ./
+RUN dotnet publish -c Release -o out
+
+# Build runtime image
+FROM microsoft/dotnet:2.0-runtime
+WORKDIR /app
+COPY --from=build-env /app/out .
+ENV ASPNETCORE_URLS="http://*:80"
+EXPOSE 80
+ENTRYPOINT ["dotnet", "k8workshop.dll"]
+```
+2. Build docker image:
+```bash
+docker build -t k8sworkshop .
+```
+3. Launch app in docker
+```bash
+docker run -it --rm -p 80:80 --name k8sws k8sworkshop
+```
+4. Launch app in docker in background
+```bash
+docker run -d --rm -p 80:80 --name myapp k8sworkshop
+```
+5. (optional) Publish docker image
+```bash
+docker tag k8sworkshop targetprocess/k8sworkshop:initial
+docker push targetprocess/k8sworkshop:initial
+```
+
+## Create helm chart
+1. Create directory for helm charts and cd into it
+```bash
+mkdir helm && cd helm
+```
+2. Create new helm chart
+```bash
+helm create k8sworkshop
+```
+
+
+
 8. helm init # initialize helm
 9. cd helm
 10. helm install k8sworkshop --name k8sws # install helm chart
