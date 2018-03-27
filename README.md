@@ -16,13 +16,24 @@ docker pull microsoft/aspnetcore-build:2.0
 docker pull microsoft/dotnet:2.0-runtime
 ```
 
+## Create dotnet core app
 1. dotnet new empty -o k8sworkshop && cd k8sworkshop # create new project
 2. dotnet new globaljson # fix dotnet sdk version
-3. docker build -t k8sworkshop . # build docker image
-4. docker run -it --rm -p 5000:5000 --name myapp k8sworkshop # launch app in docker
-5. docker run -d --rm -p 5000:5000 --name myapp k8sworkshop # launch app in docker in background
-6. docker tag k8sworkshop targetprocess/k8sworkshop:initial
-7. docker push targetprocess/k8sworkshop:initial
+3. Make sure to paste the following code snippet into k8sworkshop.csproj:
+```
+<PropertyGroup>
+    <PublishWithAspNetCoreTargetManifest>false</PublishWithAspNetCoreTargetManifest>
+</PropertyGroup>
+```
+
+## Launch app in docker
+1. docker build -t k8sworkshop . # build docker image
+2. docker run -it --rm -p 5000:5000 --name myapp k8sworkshop # launch app in docker
+3. docker run -d --rm -p 5000:5000 --name myapp k8sworkshop # launch app in docker in background
+
+## Publish docker image
+1. docker tag k8sworkshop targetprocess/k8sworkshop:initial
+2. docker push targetprocess/k8sworkshop:initial
 8. helm init # initialize helm
 9. cd helm
 10. helm install k8sworkshop --name k8sws # install helm chart
