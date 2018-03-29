@@ -62,3 +62,8 @@ NOTES:
   export NODE_IP=$(kubectl get nodes --namespace default -o jsonpath="{.items[0].status.addresses[0].address}")
   echo http://$NODE_IP:$NODE_PORT
 ```
+6. Cleanup before the next step.
+```ps
+PS C:\development\k8workshop\3_helm> helm del k8sws --purge
+release "k8sws" deleted
+```

@@ -1,0 +1,14 @@
+replicaCount: 3
+
+image:
+  repository: targetprocess/k8sworkshop
+  tag: initial
+  pullPolicy: Always
+
+ingress:
+  enabled: true
+  annotations:
+    kubernetes.io/ingress.class: nginx
+  path: /k8s
+  hosts:
+    - localhost
