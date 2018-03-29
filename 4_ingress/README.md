@@ -141,7 +141,7 @@ svc/ingress-nginx-nginx-ingress-default-backend   ClusterIP   10.109.172.42   <n
 svc/k8sws-k8sworkshop                             ClusterIP   10.102.21.115   <none>        80/TCP                       10s
 svc/kubernetes                                    ClusterIP   10.96.0.1       <none>        443/TCP                      17d
 ```
-4. The following in the list of helm charts installed in the cluster.
+4. The following is the list of helm charts installed in the cluster.
 ```ps
 PS C:\development\k8workshop\4_ingress> helm list
 NAME            REVISION        UPDATED                         STATUS          CHART               NAMESPACE
