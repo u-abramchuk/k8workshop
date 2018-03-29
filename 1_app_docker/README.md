@@ -26,7 +26,7 @@ docker run -d --rm -p 80:80 --name myapp k8sworkshop
 ```bash
 docker ps
 ```
-7. Kill docker container
+7. Stop docker container
 ```bash
 docker stop myapp
 ```

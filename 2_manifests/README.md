@@ -114,3 +114,34 @@ k8sworkshop-deployment-bd5f9848c-s8g8f   1/1       Running             0        
 k8sworkshop-deployment-bd5f9848c-vmbqr   0/1       Terminating         0          14m
 k8sworkshop-deployment-bd5f9848c-zndsq   1/1       Running             0          7m
 ```
+20. Here is what we have in cluster now.
+```ps
+PS C:\development\k8workshop\2_manifests> kubectl get all
+NAME                            DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+deploy/k8sworkshop-deployment   3         3         3            3           22h
+
+NAME                                  DESIRED   CURRENT   READY     AGE
+rs/k8sworkshop-deployment-bd5f9848c   3         3         3         22h
+
+NAME                            DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+deploy/k8sworkshop-deployment   3         3         3            3           22h
+
+NAME                                  DESIRED   CURRENT   READY     AGE
+rs/k8sworkshop-deployment-bd5f9848c   3         3         3         22h
+
+NAME                                        READY     STATUS    RESTARTS   AGE
+po/k8sworkshop-deployment-bd5f9848c-hwt9v   1/1       Running   0          22h
+po/k8sworkshop-deployment-bd5f9848c-s8g8f   1/1       Running   0          22h
+po/k8sworkshop-deployment-bd5f9848c-zndsq   1/1       Running   0          22h
+
+NAME                      TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE
+svc/k8sworkshop-service   NodePort    10.105.42.221   <none>        80:32164/TCP   9s
+svc/kubernetes            ClusterIP   10.96.0.1       <none>        443/TCP        16d
+```
+19. Delete everything before moving onto next step.
+```ps
+PS C:\development\k8workshop\2_manifests> kubectl delete -f .\service.yaml
+service "k8sworkshop-service" deleted
+PS C:\development\k8workshop\2_manifests> kubectl delete -f .\deployment.yaml
+deployment "k8sworkshop-deployment" deleted
+```

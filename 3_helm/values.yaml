@@ -1,0 +1,9 @@
+replicaCount: 1
+
+image:
+  repository: targetprocess/k8sworkshop
+  tag: initial
+  pullPolicy: Always
+
+service:
+  type: NodePort
