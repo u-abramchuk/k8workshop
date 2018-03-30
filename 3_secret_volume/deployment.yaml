@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8sworkshop-deployment
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      component: k8sworkshop-deployment
+  template:
+    metadata:
+      labels:
+        component: k8sworkshop-deployment
+    spec:
+      containers:
+      - name: k8sworkshop-deployment
+        image: targetprocess/k8sworkshop:initial
+        imagePullPolicy: Always
+        env:
+        - name: ASPNETCORE_ENVIRONMENT
+          value: Production
+        ports:
+        - containerPort: 80

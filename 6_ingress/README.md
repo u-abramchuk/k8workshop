@@ -148,3 +148,4 @@ NAME            REVISION        UPDATED                         STATUS          
 ingress-nginx   1               Thu Mar 29 09:59:04 2018        DEPLOYED        nginx-ingress-0.3.1 default
 k8sws           1               Thu Mar 29 10:11:24 2018        DEPLOYED        k8sworkshop-0.1.0   default
 ```
+5. Inspect `values.yaml` and `ingress-values.yaml`.
