@@ -23,3 +23,12 @@ spec:
           value: Production
         ports:
         - containerPort: 80
+        volumeMounts:
+        - mountPath: /secrets
+          name: k8sworkshop-secret
+          readOnly: true
+      volumes:
+      - name: k8sworkshop-secret
+        secret:
+          defaultMode: 420
+          secretName: k8sworkshop-secret

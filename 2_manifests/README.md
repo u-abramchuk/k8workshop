@@ -213,10 +213,3 @@ NAME                      TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)     
 svc/k8sworkshop-service   NodePort    10.105.42.221   <none>        80:32164/TCP   9s
 svc/kubernetes            ClusterIP   10.96.0.1       <none>        443/TCP        16d
 ```
-22. Delete everything before moving onto next step.
-```ps
-PS C:\development\k8workshop\2_manifests> kubectl delete -f .\service.yaml
-service "k8sworkshop-service" deleted
-PS C:\development\k8workshop\2_manifests> kubectl delete -f .\deployment.yaml
-deployment "k8sworkshop-deployment" deleted
-```
