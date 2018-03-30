@@ -1,6 +1,8 @@
 # Workshop plan
 
 ## Pre-requisites
+Laptop with MacOS X, Win 10, Linux (then you'll need minikube).
+
 1. Download and install [Docker CE Edge](https://www.docker.com/community-edition). Make sure to download Edge build. 2. If you have kubectl already installed then delete $HOME/.kube folder.
 3. After installing Docker go to Docker settings, switch to 'Kubernetes' tab and check 'Enable Kubernetes' checkbox. Wait till it's been installed.
 4. Check Docker installation with ```docker version``` command
