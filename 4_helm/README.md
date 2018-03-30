@@ -60,7 +60,7 @@ replicas: 5
 ```
 8. Update chart with new values.
 ```ps
-PS C:\development\k8workshop\4_helm> helm upgrade k8sws .\k8sworkshop\ -f values.yaml
+PS C:\development\k8workshop\4_helm> helm upgrade k8sws .\k8sworkshop\ -f custom-values.yaml
 Release "k8sws" has been upgraded. Happy Helming!
 LAST DEPLOYED: Fri Mar 30 10:15:54 2018
 NAMESPACE: default

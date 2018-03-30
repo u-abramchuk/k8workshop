@@ -46,6 +46,7 @@ Server: &version.Version{SemVer:"v2.8.2", GitCommit:"a80231648a1473929271764b920
 ```bash
 docker pull microsoft/aspnetcore-build:2.0
 docker pull microsoft/dotnet:2.0-runtime
+docker pull microsoft/dotnet:2.0-sdk
 ```
 
 ## Workshop

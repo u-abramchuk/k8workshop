@@ -34,7 +34,7 @@ NOTES:
 4. Inspect chart and compare with manifests from step 2.
 5. Change number of replicas to 3 and update chart.
 ```ps
-PS C:\development\k8workshop\3_helm> helm upgrade k8sws .\k8sworkshop\ -f values.yaml
+PS C:\development\k8workshop\3_helm> helm upgrade k8sws .\k8sworkshop\ -f custom-values.yaml
 Release "k8sws" has been upgraded. Happy Helming!
 LAST DEPLOYED: Thu Mar 29 09:35:13 2018
 NAMESPACE: default
