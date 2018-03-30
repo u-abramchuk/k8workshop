@@ -65,3 +65,10 @@ There is nothing interesting in here.
 root@k8sworkshop-deployment-689dcccd88-v95ps:/app# exit
 exit
 ```
+10. Cleanup.
+```ps
+PS C:\development\k8workshop\3_secret_volume> kubectl delete -f service.yaml -f secret.yaml -f deployment.yaml
+service "k8sworkshop-service" deleted
+secret "k8sworkshop-secret" deleted
+deployment "k8sworkshop-deployment" deleted
+```
