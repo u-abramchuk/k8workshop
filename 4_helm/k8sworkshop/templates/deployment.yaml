@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: k8sworkshop-deployment
 spec:
-  replicas: {{ .Values.replicas }}
+  replicas: 1
   strategy:
     type: RollingUpdate
   selector:
@@ -23,3 +23,12 @@ spec:
           value: Production
         ports:
         - containerPort: 80
+        volumeMounts:
+        - mountPath: /secrets
+          name: k8sworkshop-secret
+          readOnly: true
+      volumes:
+      - name: k8sworkshop-secret
+        secret:
+          defaultMode: 420
+          secretName: k8sworkshop-secret

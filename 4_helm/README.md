@@ -1,6 +1,6 @@
 1. Create `k8sworkshop` folder for a new helm chart.
 ```bash
-mkdir k8sworkshop
+mkdir k8sworkshop && cd k8sworkshop
 ```
 2. Add `Chart.yaml`.
 ```yaml
@@ -13,7 +13,7 @@ version: 0.1.0
 3. Add empty file `values.yaml`.
 4. Create `templates` folder and put `deployment.yaml` and 'service.yaml` in it.
 ```bash
-mkdir templates
+mkdir templates && cd templates
 ```
 5. To make replicas count configurable via `values.yaml` replace `replicas` value in `deployment.yaml` with placeholder `{{ .Values.replicas }}`.
 ```diff
@@ -27,7 +27,7 @@ spec:
     type: RollingUpdate
   selector:
 ```
-Specify `replicas` value in `values.yaml`.
+Specify `replicas` value in `k8sworkshop/values.yaml`.
 ```yaml
 replicas: 3
 ```
