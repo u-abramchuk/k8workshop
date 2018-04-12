@@ -21,8 +21,8 @@ mkdir templates && cd templates
 metadata:
   name: k8sworkshop-deployment
 spec:
-  replicas: 1
-  replicas: {{ .Values.replicas }}
+-  replicas: 1
++  replicas: {{ .Values.replicas }}
   strategy:
     type: RollingUpdate
   selector:
