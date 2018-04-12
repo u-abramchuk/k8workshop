@@ -25,15 +25,15 @@ k8sworkshop-secret    Opaque                                1         10s
           value: Production
         ports:
         - containerPort: 80
-        volumeMounts:
-        - mountPath: /secrets
-          name: k8sworkshop-secret
-          readOnly: true
-      volumes:
-      - name: k8sworkshop-secret
-        secret:
-          defaultMode: 420
-          secretName: k8sworkshop-secret
++        volumeMounts:
++        - mountPath: /secrets
++          name: k8sworkshop-secret
++          readOnly: true
++      volumes:
++      - name: k8sworkshop-secret
++        secret:
++          defaultMode: 420
++          secretName: k8sworkshop-secret
 ```
 4. Update the deployment.
 ```ps
